@@ -1,0 +1,89 @@
+@model PostCreateViewModel
+
+<form action="Edit" method="post" enctype="multipart/form-data">
+<div class="row" style="display: flex;">
+    <div class="col-md-9" style="border-radius: 10px;margin-top: 50px;background-color: #f0f0f0;">
+        <div class="login-text mt-2" style="display:flex;justify-content: center;">
+            <div class="login-part mt-2 mb-4" style="display:flex;">
+                <div class="logo" style="display: flex; align-items: center;">
+                    <i class="bi bi-code-slash" style="margin-right:4px;"></i><p style="margin-bottom: 2px;">BlogApp</p>
+                    <p style="margin-bottom: 4px;"><p class="mx-1" style="margin-bottom: 1px;">|</p><h6 style="margin-bottom: 1px;">Edit Post</h6>
+                </div>
+                
+            </div>
+
+        </div>
+            <input type="hidden" name="PostId" id="PostId" value="@Model.PostId">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="mb-3">
+                <label asp-for="Title" class="form-label"></label>
+                <input type="text" asp-for="Title" id="Title" class="form-control" placeholder="Title...">
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>  
+            <div class="mb-3">
+                <label asp-for="Url" class="form-label"></label>
+                <input type="text" asp-for="Url" id="Url" class="form-control" placeholder="Url...">
+                <span asp-validation-for="Url" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="isActive" class="form-check-label"></label>
+                <input type="checkbox" class="form-check-input" asp-for="isActive" id="isActive" class="form-control">
+                <span asp-validation-for="Url" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Content" class="form-label"></label>
+                <textarea type="text" asp-for="Content" id="Content" class="form-control" placeholder="Content..." style="min-height: 150px;"></textarea>
+                <span asp-validation-for="Content" class="text-danger"></span>
+            </div>
+            
+            <div class="mb-3" style="width: 446px; text-align: center; margin-left: 94px;">
+                <label for="FormFile" class="form-label"></label>
+                <input class="form-control" type="file" name="FormFile" id="FormFile" accept="image/*">
+            </div>
+
+            <div class="loginButton my-2" style="display: flex; justify-content: center;">
+                <div class="row">
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-secondary mx-1" style="margin-bottom: 8px; width: 100px;">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    <div class="col-md-3" style="margin-top: 50px;border-radius: 10px; text-align: center; display: flex;background-color: white;">
+        <div class="container" style="background-color: #f0f0f0;border-radius: 10px;">
+            <div class="text" style="display: flex; justify-content: center;margin-top: 16px; margin-bottom: 35px;">
+                <i class="bi bi-code-slash" style="margin-right:4px;"></i><p style="margin-bottom: 2px;">BlogApp</p>
+                <p style="margin-bottom: 4px;"><p class="mx-1" style="margin-bottom: 1px;">|</p><h6 style="margin-top: 3px;">Tags</h6>
+            </div>
+            <div class="tag-list" style="margin-top: 50px;">
+
+
+            @foreach(var tag in ViewBag.Tags)
+            {
+                <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" name="tagIds" value="@tag.TagId " id="tag_@tag.TagId"
+                    @(Model.Tags.Any(x => x.TagId ==  tag.TagId) ? "checked" : "")>
+                    
+                    
+                        <label class="form-check-label" for="tag_@tag.TagId">
+                            @tag.Text
+                        </label>
+                    </div>
+            }
+            </div>  
+            
+        </div>
+    </div>
+</div>
+
+</div>
+</form>
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/7.2.1/tinymce.min.js"></script>
+    <script>
+        tinymce.init({
+            selector: '#Content'
+        })
+    </script>
+}

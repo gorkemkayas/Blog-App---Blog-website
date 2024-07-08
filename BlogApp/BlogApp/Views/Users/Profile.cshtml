@@ -1,0 +1,113 @@
+@model User
+
+<div class="row">
+
+    <div class="col-md-3"></div>
+    <div class="col-md-6" style="background-color: #f0f0f0; border-radius: 10px;margin-top: 25px; min-height: 300px;">
+        <div class="row">
+            <div class="col-md-4" style="display: flex;flex-direction: column;margin-top: 26px;padding-right: 12px;">
+                <div style="background-color: #5e5e5e; width: 175px;height: 200px; margin-top: 25px; margin-left: 5px;border-radius: 7px;">
+                    <img id="imagePreview" src="/img/@Model.Image" alt="Add Image" style="width: 175px; height: 200px;border-radius: 6px;">
+                </div>
+                <div class="username" style="display:flex;  justify-content: center;margin-top: 15px;display: flex;"><p style="background-color:#f0f0f0; padding: 0%;margin: 0%  ;text-align: center;border: 0; font-size: smaller;"> @Model.UserName | <small class="text-muted">@Model.Title </small> </p>
+                </div>
+                <hr class="transparent transparent-sides my-2">
+
+            </div>
+            <div class="col-md-8">
+                <div class="login-text mt-2" style="display:flex;justify-content: center;margin-bottom: 30px;">
+                    <div class="login-part mb-1" style="display:flex;">
+                        <div class="logo" style="display: flex; align-items: center;margin-top: 5px;margin-bottom: 5px;">
+                            <i class="bi bi-code-slash" style="margin-right:4px;"></i><p style="margin-bottom: 2px;">BlogApp</p>
+                            <p style="margin-bottom: 4px;"><p class="mx-1" style="margin-bottom: 1px;">|</p><h6 style="margin-bottom: 1px;">Profile</h6>
+                        </div>          
+                    </div>  
+                </div>
+                <div class="information" style="margin-top: 50px;">
+
+                    <div class="Firstname my-2" style="display: flex;height: 30px;">
+                        <p style="margin: 0%; display: flex; align-items: center; margin-right: 10px;font-weight: 600;">Name:</p> <p style="
+                            width: 150px;margin-left: 83px;">@Model.FirstName</p>
+                    </div>
+                    <div class="Surname my-2" style="display: flex;height: 30px;">
+                        <p style="margin: 0%; display: flex; align-items: center; margin-right: 10px;font-weight: 600;">Surname:</p> <p style="
+                            width: 150px;margin-left: 63px;">@Model.SurName</p>
+                    </div>
+                    <div class="email my-2" style="display: flex;height: 30px;">
+                        <p style="margin: 0%; display: flex; align-items: center; margin-right: 10px;font-weight: 600;">Email:</p> <p style="
+                        width: 250px; margin-left: 87.5px;margin-right: 80px;">@Model.Email</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr class="transparent transparent-sides">
+        <div class="posts" style="background-color: #f0f0f0; border-radius: 10px;margin-top: 35px;">
+            <div class="header">
+                <h6 style="text-align: center;"><i class="bi bi-card-heading" style="margin-top: 15px;margin-right: 5px;"></i>@Model.UserName's published Posts (@Model.Posts.Count())</h6>
+                <br>
+                <table class="table table-striped" style="border-radius: 10px ;margin-bottom: 50px;">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Article</th>
+                        <th>Release Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            var k = 1;
+                        
+                        foreach(var post in Model.Posts)
+                        {
+
+                        <tr>
+                            <td>@k</td>
+                            <td><a href="/posts/details/@post.Url" style="color:black">@post.Title</a></td>
+                            <td>@post.PublishedOn</td>
+                        </tr>
+                        {k = k +1;}
+                        }
+                    }
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+        <hr class="transparent transparent-sides">
+        <div class="comments" style="background-color: #f0f0f0; border-radius: 10px;margin-top: 25px; min-height: 300px;">
+            <h6 style="text-align: center;"><i class="bi bi-chat-left-text" style="margin-top: 15px;margin-right: 5px;"></i>@Model.UserName's published Comments (@Model.Comments.Count())</h6>
+                <br>
+                <table class="table table-striped" style="border-radius: 10px ;margin-bottom: 50px;">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Comment</th>
+                        <th>Article</th>
+                        <th>Release Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        @if(Model.Comments.Count != 0)
+                        {  
+                                var i = 1;
+
+                            @foreach(var comment in @Model.Comments)
+                            {
+                                
+                            <tr>
+                                <td>@i</td>
+                                <td>@comment.CommentText</td>
+                                <td><a href="/posts/details/@comment.Post.Url" style="color: black;">@comment.Post.Title</a></td>
+                                <td>@comment.PublishedOn</td>
+                            </tr>
+                            i = i + 1;
+                            }
+                            
+                        }
+                        
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3"></div>
+</div>

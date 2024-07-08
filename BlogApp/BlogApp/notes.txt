@@ -1,0 +1,8 @@
+registerViewModel içine istediğim özellikleri ekledim, form action kısmındada bunlara karşılık gelen kısımları bilgi olarak aldım fakat post methoduna doğru şekilde geliyor mu kontrol etmedim.
+program hata verdi muhtemelen dosya seçim kodlarında problem vardır
+post methodu içinde user oluşturup contexte kaydetme kodu yazdım fakat doğrulugundan hiç emin değilim
+registerViewModel den FormFile.FileName alıp new User içinde Image e atadım, doğru geçiyor mu geçmiyor mu kontrol etmek gerek,
+image saving istediğim yere save oluyor mu olmuyor mu onu kontrol etmem gerek.
+
+
+postviewmodel e targetpath eklerim, modelis validlerden gerksiz yerlerde targetpathi remove larım

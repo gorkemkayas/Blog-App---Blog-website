@@ -1,0 +1,54 @@
+@model PostViewModel
+
+<div class="row">
+    <div class="col-lg-8">
+        <h3 style="text-align:center; margin-bottom: 2%; font-family:'Times New Roman', Times, serif;">Popular Posts</h3>
+        <hr class="transparent transparent-sides">
+        <div class="column">
+            @foreach(var post in Model.Posts)
+            {
+                <div class="container bg-white rounded box" style="border: 1px solid rgb(237, 237, 237);">
+                    <div class="row p-2">
+                        <div class="col-4" style="height: 200px;text-align: center;align-items: center; display: grid;">
+                            <a href="/posts/details/@post.Url"><img src="/img/@post.Image" class="img-fluid rounded" alt="/img/@post.Image" style="max-height: 90%;"></a>
+                        </div>
+                        <div class="col-8" style="min-height: 200px; display:flex;flex-direction: column; justify-content:space-around;">
+                                <div class="container">
+                                    <div style="padding-bottom: 2%;">
+                                        <h4><a href="/posts/details/@post.Url">@post.Title</a></h4>
+                                    </div>
+                                    <div class="card-text-2 card-2" style="padding-bottom: 2%;max-height: 100px; overflow: hidden;text-overflow: ellipsis;">
+                                        <p>@Html.Raw(@post.Content)</p>
+                                    </div>
+                                    <div>
+                                        <div class="container" style="padding: 0%;">
+                                            <div class="row">
+                                                <div class="col-5" style="padding-left:3%;">
+                                                    <p class="card-text"><small class="text-muted">@post.PublishedOn</small></p>  
+                                                </div>  
+
+                                            </div>
+                                            <div class=" mt-2" style="padding:0%;;max-width: 534px;">
+                                                @foreach(var postTag in post.Tags)
+                                                {
+                                                    <a href="/posts/tag/@postTag.Url" class="badge   bg-light bg-opacity-20 text-secondary text-opacity-100 mb-2 fw-bold" style="margin-left: 2px;">@postTag.Text</a>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                        </div>
+                    </div>
+                </div>
+                <hr style="opacity: calc(0);">
+            }
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <vc:tags-menu></vc:tags-menu>
+        <br>
+        <vc:new-posts></vc:new-posts>
+    </div>
+</div>

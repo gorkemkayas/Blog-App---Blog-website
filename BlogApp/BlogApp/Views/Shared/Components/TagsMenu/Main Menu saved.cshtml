@@ -1,0 +1,32 @@
+<div class="col-lg-4">    
+    <div class="container" style="text-align: center; font-family: 'Times New Roman', Times, serif;margin-bottom: 20px;">
+        <h3>Popular Tags</h3>
+    </div>
+    <hr>
+    <div class="container" style="min-height: 218.19px ; width:100%;background-color: white;border-radius: 5px;">
+        <div class="card" style="background-color: transparent;border: 0;">
+            <div class="card-body">
+                <ul class="list-group">
+                    @{
+                        var i = 1;
+                    }
+                    @foreach(var tag in Model.Tags)
+                    { 
+                        var random = new Random();
+                        int randomNumber = random.Next(0,101);
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <a href="#" class="btn btn-light btn-sm">#@i  @tag.Text</a><span class="badge bg-primary badge-pill">
+                                @randomNumber
+
+                            </span>
+                        </li>
+
+                            i += 1;
+                    }
+                </ul>
+
+            </div>
+        </div>
+
+    </div>
+</div>

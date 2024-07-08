@@ -1,0 +1,88 @@
+@model RegisterViewModel
+
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6" style="background-color: #f0f0f0; border-radius: 10px;margin-top: 25px;">
+        <div class="login-text mt-2 mb-3" style="display:flex;justify-content: center;">
+            <div class="login-part mt-2 mb-4" style="display:flex;">
+                <div class="logo" style="display: flex; align-items: center;margin-top: 10px;">
+                    <i class="bi bi-code-slash" style="margin-right:4px;"></i><p style="margin-bottom: 2px;">BlogApp</p>
+                    <p style="margin-bottom: 4px;"><p class="mx-1" style="margin-bottom: 1px;">|</p><h6 style="margin-bottom: 1px;">Register Informations</h6>
+                </div>
+                
+            </div>
+
+        </div>
+        <form action="Register" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+
+                
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="mb-3" style="display: flex; justify-content:center;text-align: center;">
+                    <div class="firstname mx-2">
+                        <label asp-for="FirstName" class="form-label"></label>
+                        <input type="text" asp-for="FirstName" id="FirstName" class="form-control" placeholder="Firstname...">
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+                    <div class="surname mx-2">
+                        <label asp-for="SurName" class="form-label"></label>
+                        <input type="text" asp-for="SurName" id="SurName" class="form-control" placeholder="Surname...">
+                        <span asp-validation-for="SurName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="mb-3" style=" text-align: center; margin-left: 94px;margin-right: 95px;">
+                    <label asp-for="Email" class="form-label"></label>
+                    <input type="email" asp-for="Email" id="Email" class="form-control" placeholder="Email...">
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="mb-3" style="width: 446px; text-align: center; margin-left: 94px; display:flex; justify-content: center;">
+                    <div class="username">
+                        <label asp-for="UserName" class="form-label"></label>
+                        <input type="text" asp-for="UserName" id="UserName" class="form-control" placeholder="Username...">
+                        <span asp-validation-for="UserName" class="text-danger"></span>
+                    </div>
+                    <div class="titles">
+                        <label asp-for="Title" class="form-label"></label>
+                        <input type="text" asp-for="Title" id="Title" class="form-control" placeholder="Title...">
+                    </div>
+                </div>
+
+                <div class="mb-3" style="display: flex; justify-content:center;text-align: center;">
+                    <div class="firstname mx-3">
+                        <label asp-for="Password" class="form-label"></label>
+                        <input type="password" asp-for="Password" id="Password" class="form-control" placeholder="Password...">
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <div class="surname mx-3">
+                        <label asp-for="ConfirmPassword" class="form-label"></label>
+                        <input type="password" asp-for  ="ConfirmPassword" id="Password" class="form-control" placeholder="Confirm password...">
+                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="mb-3" style="width: 446px; text-align: center; margin-left: 94px;">
+                    <label for="FormFile" class="form-label"></label>
+                    <input class="form-control" type="file" name="FormFile" id="FormFile" accept="image/*">
+                    <img id="imagePreview" src="" alt="Görsel Önizlemesi" style="max-width: 300px; max-height: 300px;"/>
+                </div>
+            </div>
+
+            <div class="loginButton my-2" style="display: flex; justify-content: center;">
+                <button type="submit" class="btn btn-secondary" style="margin-bottom: 8px;margin-top: 10px;width: 125px;">Register</button>
+
+            </div>
+
+        </form>
+    </div>
+    <div class="col-md-3"></div>
+
+</div>
+<script>
+    document.getElementById('FormFile').addEventListener('change', function(event) {
+        var reader = new FileReader();
+        reader.onload = function(){
+            var output = document.getElementById('imagePreview');
+            output.src = reader.result;
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    });
+</script>

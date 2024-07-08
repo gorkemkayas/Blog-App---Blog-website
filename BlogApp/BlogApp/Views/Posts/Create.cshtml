@@ -1,0 +1,55 @@
+@model PostCreateViewModel
+
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8" style="background-color: #f0f0f0; border-radius: 10px;margin-top: 50px;">
+        <div class="login-text mt-2" style="display:flex;justify-content: center;">
+            <div class="login-part mt-2 mb-4" style="display:flex;">
+                <div class="logo" style="display: flex; align-items: center;">
+                    <i class="bi bi-code-slash" style="margin-right:4px;"></i><p style="margin-bottom: 2px;">BlogApp</p>
+                    <p style="margin-bottom: 4px;"><p class="mx-1" style="margin-bottom: 1px;">|</p><h6 style="margin-bottom: 1px;">Create Post</h6>
+                </div>
+                
+            </div>
+
+        </div>
+        <form action="Create" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="Url" value="#Title">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="mb-3">
+                <label asp-for="Title" class="form-label"></label>
+                <input type="text" name="Title" id="Title" class="form-control" placeholder="Title...">
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>  
+
+            <div class="mb-3">
+                <label asp-for="Content" class="form-label"></label>
+                <textarea type="text" name="Content" id="Content" class="form-control" placeholder="Content..." style="min-height: 150px;"></textarea>
+                <span asp-validation-for="Content" class="text-danger"></span>
+            </div>
+            
+            <div class="mb-3" style="width: 446px; text-align: center; margin-left: 94px;">
+                <label for="FormFile" class="form-label"></label>
+                <input class="form-control" type="file" name="FormFile" id="FormFile" accept="image/*">
+            </div>
+
+            <div class="loginButton my-2" style="display: flex; justify-content: center;">
+                <div class="row">
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-secondary mx-1" style="margin-bottom: 8px; width: 100px;">Post</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-2"></div>
+
+</div>
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/7.2.1/tinymce.min.js"></script>
+    <script>
+        tinymce.init({
+            selector: '#Content'
+        })
+    </script>
+}

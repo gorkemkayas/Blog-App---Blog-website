@@ -1,0 +1,25 @@
+@model List<Post>
+
+    <div class="container" style="text-align: center; font-family: 'Times New Roman', Times, serif;margin-bottom: 20px;">
+        <h3>Last Posts</h3>
+    </div>
+    <hr class="transparent transparent-sides">
+    <div class="container" style="min-height: 218.19px ; width:100%;background-color: white;border-radius: 5px;">
+        <div class="card" style="background-color: transparent;border: 0;">
+            <div class="card-body">
+                <ul class="list-group">
+
+                    @foreach(var post in Model)
+                    { 
+                        <li class="list-group-item d-flex align-items-center" style="justify-content:space-between;">
+                            <a href="/posts/details/@post.Url" class="btn btn-light btn-sm" style="width: 192.24px;margin-right: 10px;">@post.Title</a><span class="badge bg-success badge-pill">
+                                @post.PublishedOn
+                            </span>
+                        </li>
+                    }
+                </ul>
+
+            </div>
+        </div>
+
+    </div>

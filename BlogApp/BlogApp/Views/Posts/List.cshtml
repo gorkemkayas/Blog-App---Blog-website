@@ -1,0 +1,50 @@
+@model List<Post>
+
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <h2 style="text-align: center;">Post List</h2>
+        <hr class="transparent transparent-sides">
+        <table class="table tabled-bordered table-striped mt-3">
+            <thead>
+                <tr style="text-align: center;">
+                    <th style="width: 200px;">Image</th>
+                    <th>Title</th>
+                    <th>Is Active</th>
+                    <th style="width: 125px;">Actions</th>
+                </tr>
+            </thead>
+            <tbody style="text-align: center;">
+                @foreach(var item in Model)
+                {   
+                    <tr>
+                        <td><a href="/posts/details/@item.Url"><img src="/img/@item.Image" class="img-fluid" alt=""></a></td>
+                        <td>@item.Title</td>
+                        <td>@if(@item.isActive)
+                            {
+                                <p>Active</p>
+                            }
+                            else
+                            {
+                                <p>Deactive</p>
+                            }
+                            
+                        </td>
+                        <td>
+                            <a href="/posts/edit/@item.PostId" class="btn btn-secondary btn-sm">Edit</a>
+                            <a href="#" class="btn btn-dark btn-sm">Delete</a>
+                        </td>
+                    </tr>
+                }
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><a href="/posts/create" class="btn btn-dark">New Post</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-2"></div>
+</div>
+

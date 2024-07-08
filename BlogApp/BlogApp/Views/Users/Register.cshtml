@@ -1,0 +1,76 @@
+@model RegisterViewModel
+
+<div class="row">
+    <form action="Register" method="post" enctype="multipart/form-data"></form>
+    <div class="col-md-3"></div>
+    <div class="col-md-6" style="background-color: #f0f0f0; border-radius: 10px;margin-top: 25px; min-height: 300px;">
+        <form action="Register" method="post" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-md-4" style="display: flex;flex-direction: column;margin-top: 26px;padding-right: 12px;">
+                <div style="background-color: #5e5e5e; width: 175px;height: 200px; margin-top: 25px; margin-left: 5px;border-radius: 7px;">
+                    <img id="imagePreview" src="/img/unknown.jpg" alt="Add Image" style="width: 175px; height: 200px;border-radius: 6px;"/>
+                </div>
+                <div class="username" style="display:flex; justify-content: center;margin-top: 15px;display: flex;"><input type="text" name="UserName" id="Username" placeholder="username" class="form-control" style="width: 80px;background-color:#f0f0f0; padding: 0%;margin: 0%  ;text-align: center;border: 0;"> | <input type="text" name="Title" id="Title" placeholder="Title" class="form-control" style="width: 80px;background-color:#f0f0f0; padding: 0%;margin: 0%  ;text-align: center;border: 0;">
+                </div>
+                <hr class="transparent transparent-sides my-2">
+
+            </div>
+            <div class="col-md-8">
+                <div class="login-text mt-2" style="display:flex;justify-content: center;margin-bottom: 0%;">
+                    <div class="login-part mb-1" style="display:flex;">
+                        <div class="logo" style="display: flex; align-items: center;margin-top: 5px;margin-bottom: 5px;">
+                            <i class="bi bi-code-slash" style="margin-right:4px;"></i><p style="margin-bottom: 2px;">BlogApp</p>
+                            <p style="margin-bottom: 4px;"><p class="mx-1" style="margin-bottom: 1px;">|</p><h6 style="margin-bottom: 1px;">Register Informations</h6>
+                        </div>
+                        
+                    </div>
+        
+                </div>
+                <div class="Firstname my-1" style="display: flex;height: 30px;">
+                    <p style="margin: 0%; display: flex; align-items: center; margin-right: 10px;">Name:</p> <input type="text" name="FirstName" id="FirstName" class="form-control" placeholder="Name..." style="
+                        width: 150px; background-color: #fafafa;margin-left: 83px;">
+                </div>
+                <div class="Surname my-1" style="display: flex;height: 30px;">
+                    <p style="margin: 0%; display: flex; align-items: center; margin-right: 10px;">Surname:</p> <input type="text" name="SurName" id="SurName" class="form-control" placeholder="Surname..." style="
+                        width: 150px; background-color: #fafafa;margin-left: 63px;">
+                </div>
+                <div class="email my-1" style="display: flex;height: 30px;">
+                    <p style="margin: 0%; display: flex; align-items: center; margin-right: 10px;">Email:</p> <input type="email" name="Email" id="Email" class="form-control" placeholder="Email..." style="
+                        width: 250px; background-color: #fafafa;margin-left: 87.5px;margin-right: 80px;">
+                </div>
+                <div class="email my-1" style="display: flex;height: 30px;">
+                    <p style="margin: 0%; display: flex; align-items: center; margin-right: 10px;">Password:</p> <input type="password" name="Password" id="Password" class="form-control" placeholder="Password..." style="
+                        width: 250px; background-color: #fafafa;margin-left: 59px;">
+                </div>
+                <div class="email my-1" style="display: flex;height: 30px;">
+                    <p style="margin: 0%; display: flex; align-items: center; margin-right: 10px;font-size:smaller;">Confirm password:</p><input type="password" name="ConfirmPassword" id="ConfirmPassword" class="form-control" placeholder="Confirm password..." style="
+                        width: 250px; background-color: #fafafa;margin-right: 20px;margin-left: 20px;">
+                </div>
+                <div class="formImage my-1" style="display: flex;height: 35px;">
+                    <p style="margin: 0%; display: flex; align-items: center; margin-right: 10px;">Profile Photo:</p>
+                    <input class="form-control" type="file" name="FormFile" id="FormFile" accept="image/*" style="width: 250px;margin-left: 35px;">
+                </div>
+
+                <div class="register-button " style="display: flex;justify-content: center;margin-top: 10px;margin-bottom: 10px;">
+                    <button type="submit" class="btn btn-dark" style="width: 120px;">Register!</button>
+                </div>
+
+            </div>
+        </div>
+
+
+        </form> 
+    </div>
+    <div class="col-md-3"></div>
+
+</div>
+<script>
+    document.getElementById('FormFile').addEventListener('change', function(event) {
+        var reader = new FileReader();
+        reader.onload = function(){
+            var output = document.getElementById('imagePreview');
+            output.src = reader.result;
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    });
+</script>
